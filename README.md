@@ -1,74 +1,38 @@
-# Patrones de Diseño y Arquitectura Limpia
+# Proyecto Web API REST con Arquitectura Limpia y Patrón Repository
 
-Este repositorio contiene ejemplos de implementación de los patrones de diseño Mediator, Unit of Work, Repository y CQRS, siguiendo los principios de la arquitectura limpia.
+Este proyecto es una API REST desarrollada utilizando la Arquitectura Limpia y el Patrón Repository. Está diseñado para proporcionar una estructura modular y mantenible para la gestión de datos a través de una interfaz de programación de aplicaciones (API) RESTful.
 
-## Mediator
+## Estructura del Proyecto
 
-### Descripción
-El patrón Mediator se utiliza para reducir las dependencias directas entre los componentes de un sistema. En lugar de que los componentes se comuniquen directamente entre sí, utilizan un objeto mediador central para gestionar las interacciones.
+El proyecto sigue la Arquitectura Limpia, que se compone de las siguientes capas:
 
-### Ejemplo de Uso
-En nuestro proyecto, el `Mediator` actúa como un intermediario entre los diferentes módulos del sistema, facilitando la comunicación de manera desacoplada.
+1. **Dominio (Core):** Contiene las entidades de negocio y las reglas de negocio.
+2. **Aplicación (Application):** Implementa casos de uso y orquesta la lógica de la aplicación.
+3. **Infraestructura:** Proporciona implementaciones concretas de las interfaces definidas en el dominio y contiene detalles de la infraestructura, como bases de datos y servicios externos.
 
-## Unit of Work
+Además, se ha implementado el Patrón Repository para la gestión de datos, utilizando Entity Framework como ORM (Mapeador Objeto-Relacional) para la interacción con la base de datos.
 
-### Descripción
-El patrón Unit of Work se utiliza para gestionar transacciones y asegurar que un conjunto de operaciones se complete con éxito o se deshaga completamente si algo falla.
+## Dependencias Principales
 
-### Ejemplo de Uso
-Hemos implementado una clase `UnitOfWork` que encapsula las operaciones de base de datos, permitiendo realizar cambios en la base de datos como una unidad coherente.
+- [Entity Framework](https://docs.microsoft.com/en-us/ef/): Framework ORM para la interacción con bases de datos.
+- [Microsoft.EntityFrameworkCore.InMemory](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.InMemory/): Proveedor de base de datos en memoria para Entity Framework, útil para pruebas.
+- [Microsoft.Extensions.Caching.Memory](https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory/): Proveedor de almacenamiento en caché en memoria para mejorar el rendimiento de la aplicación.
+- [JWT](https://jwt.io/): Utilizado para el inicio de sesión y la validación de credenciales mediante token.
 
-## Repository
+## Características Adicionales
 
-### Descripción
-El patrón Repository se utiliza para encapsular la lógica de acceso a datos y proporcionar una interfaz común para trabajar con datos persistentes.
+- **Inicio de Sesión con JWT:** La autenticación en la API se realiza mediante tokens JWT para garantizar la seguridad y la validez de las credenciales.
 
-### Ejemplo de Uso
-Hemos creado un conjunto de `Repositories` para manejar la persistencia de entidades específicas, facilitando la separación de preocupaciones y mejorando la mantenibilidad del código.
+- **Carga de Datos Predeterminados:** El proyecto, al utilizar una base de datos en memoria, carga automáticamente datos de productos y elementos del menú (bebidas) al iniciar la aplicación. Esto facilita las pruebas y la demostración del funcionamiento del sistema.
 
-## CQRS (Command Query Responsibility Segregation)
+## Configuración y Uso
 
-### Descripción
-El patrón CQRS se basa en la idea de dividir las operaciones de lectura (queries) y escritura (commands) en modelos de dominio separados. Esto permite optimizar cada modelo para su tarea específica.
+1. **Requisitos Previos:**
+   - [Node.js](https://nodejs.org/) instalado
+   - Gestor de paquetes [npm](https://www.npmjs.com/) o [Yarn](https://yarnpkg.com/) instalado
+   - Base de datos SQL Server configurada (o usar el proveedor en memoria para pruebas)
 
-### Ejemplo de Uso
-Hemos implementado el patrón CQRS en nuestro sistema, dividiendo las responsabilidades de lectura y escritura para mejorar el rendimiento y la escalabilidad.
-
-## Arquitectura Limpia
-
-### Descripción
-La arquitectura limpia es un enfoque de desarrollo de software que promueve la separación de preocupaciones y la organización del código en capas independientes.
-
-### Principios Principales
-1. **Independencia de Frameworks:** Las capas internas no deben depender de detalles de implementación de capas externas o de frameworks externos.
-2. **Independencia de Interfaz de Usuario:** La lógica de negocio no debe depender de la interfaz de usuario, permitiendo cambios en la IU sin afectar la lógica subyacente.
-3. **Independencia de la Base de Datos:** La capa de negocio no debe depender directamente de la capa de acceso a datos, facilitando la flexibilidad en la elección de tecnologías de almacenamiento.
-
-## Registro de Tiempo de Respuesta
-
-### Descripción
-Todos los tiempos de respuesta de las solicitudes se registran automáticamente en archivos de logs. Los archivos de logs están ubicados en la carpeta `/Log/` del proyecto.
-
-### Ejemplo de Uso
-Puedes revisar los archivos de logs en la carpeta `/Log/` para analizar el rendimiento de las solicitudes y detectar posibles problemas.
-
-
-### Base de Datos SQL Server
-1. Asegúrate de tener un servidor SQL Server disponible.
-2. Configura la cadena de conexión en el archivo `appsettings.json` en la sección `ConnectionStrings`. Ejemplo:
-   ```json
-   {
-     "ConnectionStrings": {
-       "TestNet": "Server=tu_servidor_sql;Database=nombre_base_de_datos;User=usuario;Password=contraseña;"
-     },
-     // ...
-   }
-3. Ejecutar el script ("ScriptsSQL/[dbo].[Product].sql") para la creación de la Tabla productos:
-
-## Ejecución del Proyecto
-
-1. Clona el repositorio: `git clone https://github.com/MosoTrux/TestNet.git`
-2. Navega al directorio del proyecto: `cd proyecto`
-3. Ejecuta la aplicación: `npm start` o `yarn start`
-
-¡Gracias por revisar nuestro proyecto! Si tienes alguna pregunta o sugerencia, no dudes en abrir un problema o ponerte en contacto con nosotros.
+2. **Clonar el Repositorio:**
+   ```bash
+   git clone https://github.com/MosoTrux/TestNetProsegur
+   cd proyecto-api-rest
