@@ -27,12 +27,4 @@ Además, se ha implementado el Patrón Repository para la gestión de datos, uti
 
 ## Configuración y Uso
 
-1. **Requisitos Previos:**
-   - [Node.js](https://nodejs.org/) instalado
-   - Gestor de paquetes [npm](https://www.npmjs.com/) o [Yarn](https://yarnpkg.com/) instalado
-   - Base de datos SQL Server configurada (o usar el proveedor en memoria para pruebas)
 
-2. **Clonar el Repositorio:**
-   ```bash
-   git clone https://github.com/MosoTrux/TestNetProsegur
-   cd proyecto-api-rest
