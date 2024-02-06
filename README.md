@@ -53,7 +53,7 @@ Además, se han creado los siguientes productos:
 - Stock: 20 KG
 - Unidad: KG
 
-**Leche:
+**Leche:**
 
 - Stock: 50 LT
 - Unidad: LT
@@ -91,3 +91,32 @@ También, se han definido los siguientes elementos del menú:
 - Ingredientes:
 - Café: 0.2 KG
 - Azúcar: 0.3 KG
+
+
+
+## Funcionalidad de los Endpoints
+
+**El endpoint "/api/Auth/Login"**
+- Sirve para generar el token de autenticación.
+
+
+**El endpoint  "/api/Order/Register"**
+- Sirve para dar de alta un pedido. Esta acción solo la puede realizar usuarios con perfil Administrador/Empleado.
+
+
+**El endpoint  "/api/Order/GetAll"**
+- Sirve para listar todos los pedidos generados. Esta acción solo la puede realizar usuarios con perfil Administrador/Supervisor.
+
+
+**El endpoint  "/api/Order/GetInvoice"**
+- Sirve para generar las facturas de los pedidos. Esta acción solo la puede realizar usuarios con perfil Administrador/Supervisor.
+
+
+**El endpoint  "/api/Product/AddStock"**
+- Sirve agregar stock a los productos. Esta acción solo la puede realizar usuarios con perfil Administrador/Supervisor.
+
+**Nota**
+- Todos los endpopints a excepción de "/api/Auth/Login" deben llevar en sus headers la llave "Authorization"
+
+Ejemplo:
+Authorization: Bearer [session-token]
