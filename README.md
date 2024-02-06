@@ -26,5 +26,68 @@ Además, se ha implementado el Patrón Repository para la gestión de datos, uti
 - **Carga de Datos Predeterminados:** El proyecto, al utilizar una base de datos en memoria, carga automáticamente datos de productos y elementos del menú (bebidas) al iniciar la aplicación. Esto facilita las pruebas y la demostración del funcionamiento del sistema.
 
 ## Configuración y Uso
+El proyecto realiza una carga inicial de datos al iniciar la aplicación. 
+
+Se han creado los siguientes usuarios:
+
+- **Administrador:**
+
+Email: administrator@outlook.com
+Contraseña: 12345aB@
+
+- **Supervisor:**
+
+Email: supervisor@outlook.com
+Contraseña: 12345aB@
+
+- **Empleado:**
+
+Email: employeed@outlook.com
+Contraseña: 12345aB@
 
 
+Además, se han creado los siguientes productos:
+
+- **Café:**
+
+Stock: 20 KG
+Unidad: KG
+
+- **Leche:
+
+Stock: 50 LT
+Unidad: LT
+
+
+- **Azúcar:**
+
+Stock: 200 KG
+Unidad: KG
+
+
+
+También, se han definido los siguientes elementos del menú:
+
+- **Hot Coffees:**
+
+Categoría: Drinks
+Precio: $15
+Ingredientes:
+Café: 0.2 KG
+
+- **Frappuccino:**
+
+Categoría: Drinks
+Precio: $19
+Ingredientes:
+Café: 0.2 KG
+Leche: 0.1 LT
+Azúcar: 0.3 KG
+
+- **Cold Coffees:**
+
+Categoría: Drinks
+Precio: $13
+Ingredientes:
+Café: 0.2 KG
+Azúcar: 0.3 KG
