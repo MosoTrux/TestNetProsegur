@@ -32,37 +32,37 @@ Se han creado los siguientes usuarios:
 
 - **Administrador:**
 
-Email: administrator@outlook.com
-Contraseña: 12345aB@
+- Email: administrator@outlook.com
+- Contraseña: 12345aB@
 
 - **Supervisor:**
 
-Email: supervisor@outlook.com
-Contraseña: 12345aB@
+- Email: supervisor@outlook.com
+- Contraseña: 12345aB@
 
 - **Empleado:**
 
-Email: employeed@outlook.com
-Contraseña: 12345aB@
+- Email: employeed@outlook.com
+- Contraseña: 12345aB@
 
 
 Además, se han creado los siguientes productos:
 
 - **Café:**
 
-Stock: 20 KG
-Unidad: KG
+- Stock: 20 KG
+- Unidad: KG
 
 - **Leche:
 
-Stock: 50 LT
-Unidad: LT
+- Stock: 50 LT
+- Unidad: LT
 
 
 - **Azúcar:**
 
-Stock: 200 KG
-Unidad: KG
+- Stock: 200 KG
+- Unidad: KG
 
 
 
@@ -70,24 +70,24 @@ También, se han definido los siguientes elementos del menú:
 
 - **Hot Coffees:**
 
-Categoría: Drinks
-Precio: $15
-Ingredientes:
-Café: 0.2 KG
+- Categoría: Drinks
+- Precio: $15
+- Ingredientes:
+- Café: 0.2 KG
 
 - **Frappuccino:**
 
-Categoría: Drinks
-Precio: $19
-Ingredientes:
-Café: 0.2 KG
-Leche: 0.1 LT
-Azúcar: 0.3 KG
+- Categoría: Drinks
+- Precio: $19
+- Ingredientes:
+- Café: 0.2 KG
+- Leche: 0.1 LT
+- Azúcar: 0.3 KG
 
 - **Cold Coffees:**
 
-Categoría: Drinks
-Precio: $13
-Ingredientes:
-Café: 0.2 KG
-Azúcar: 0.3 KG
+- Categoría: Drinks
+- Precio: $13
+- Ingredientes:
+- Café: 0.2 KG
+- Azúcar: 0.3 KG
