@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TestNetProsegur.Application.Dtos
+namespace TestNetProsegur.Application.Dtos.Order
 {
     public class GetInvoiceDto
     {
         public long OrderId { get; set; }
         public string Customer { get; set; }
         public string Employeed { get; set; }
-        public string State { get; set; }
+        public string Province { get; set; }
         public decimal SubTotal { get; set; }
         public decimal Tax { get; set; }
         public decimal Total { get; set; }

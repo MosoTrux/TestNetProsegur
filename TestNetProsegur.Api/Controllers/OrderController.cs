@@ -1,8 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TestNetProsegur.Application.Dtos.Order;
 using TestNetProsegur.Application.Interfaces;
-using TestNetProsegur.Core.Entities;
 
 namespace TestNetProsegur.Api.Controllers
 {
@@ -29,8 +28,20 @@ namespace TestNetProsegur.Api.Controllers
         //    return BadRequest(result);
         //}
 
+        [HttpGet("GetAll")]
+        [Authorize(Roles = "ADMINISTRATOR, SUPERVISOR")]
+        public async Task<IActionResult> GetAll()
+        {
+            var result = await _orderService.GetAll();
+            if (result.IsSuccess)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
         [HttpGet("GetById")]
-        //[Authorize(Roles = "SUPERVISOR, EMPLOYEED")]
+        [Authorize(Roles = "ADMINISTRATOR, SUPERVISOR")]
         public async Task<IActionResult> GetById(long id)
         {
             var result = await _orderService.GetById(id);
@@ -42,6 +53,7 @@ namespace TestNetProsegur.Api.Controllers
         }
 
         [HttpPost("Register")]
+        [Authorize(Roles = "ADMINISTRATOR, EMPLOYEED")]
         public async Task<IActionResult> Register(RegisterOrderDto model)
         {
             var result = await _orderService.Register(model);
@@ -53,6 +65,7 @@ namespace TestNetProsegur.Api.Controllers
         }
 
         [HttpGet("GetInvoice")]
+        [Authorize(Roles = "ADMINISTRATOR, SUPERVISOR")]
         public async Task<IActionResult> GetInvoice(long orderId)
         {
             var result = await _billingService.GetInvoice(orderId);

@@ -19,7 +19,6 @@ namespace TestNetProsegur.Application.Dtos.Order
     {
         public long IdMenuItem { get; set; }
         public int Quantity { get; set; }
-
     }
 
 }

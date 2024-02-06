@@ -4,7 +4,6 @@ using TestNetProsegur.Application.Dtos.Order;
 using TestNetProsegur.Application.Interfaces;
 using TestNetProsegur.Core.Entities;
 using TestNetProsegur.Core.Repositories;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace TestNetProsegur.Application.Implements
 {
@@ -47,17 +46,75 @@ namespace TestNetProsegur.Application.Implements
             return response;
         }
 
-        public async Task<ServiceResponseDto<Order>> GetById(long id)
+        public async Task<ServiceResponseDto<List<GetOrderResponseDto>>> GetAll()
         {
-            var response = new ServiceResponseDto<Order>();
+            var response = new ServiceResponseDto<List<GetOrderResponseDto>>();
             try
             {
-                var item = await _orderRepository
+                var orders = await _orderRepository
+                    .GetAll()
+                    .Include(d => d.OrderItems)
+                        .ThenInclude(d => d.IdMenuItemNavigation)
+                    .ToListAsync() ?? throw new Exception("No existen órdenes.");
+
+                var result = orders.
+                    Select(order => new GetOrderResponseDto
+                    {
+                        Customer = "Juan Perez",
+                        Employeed = "John Doe",
+                        OrderId = order.Id,
+                        Province = GlobalVar.Provinces[order.ProvinceCode],
+                        State = order.State,
+                        CreatedAt = order.CreatedAt,
+                        OrderItems = order.OrderItems
+                        .Select(x => new GetOrderItemDto
+                        {
+                            MenuItem = x.IdMenuItemNavigation.Name,
+                            Price = x.IdMenuItemNavigation.Price,
+                            Quantity = x.Quantity
+                        }).ToList()
+                    }).ToList();
+
+                response.Data = result;
+                response.IsSuccess = true;
+            }
+            catch (Exception ex)
+            {
+                response.ValidationMessages.Add($"No se pudo obtener el item. Exception: {ex.Message}");
+                response.IsSuccess = false;
+            }
+            return response;
+        }
+
+        public async Task<ServiceResponseDto<GetOrderResponseDto>> GetById(long id)
+        {
+            var response = new ServiceResponseDto<GetOrderResponseDto>();
+            try
+            {
+                var order = await _orderRepository
                     .GetBy(order => order.Id == id)
                     .Include(d=>d.OrderItems)
-                    .FirstOrDefaultAsync();
+                        .ThenInclude(d => d.IdMenuItemNavigation)
+                    .FirstOrDefaultAsync() ?? throw new Exception("La orden no existe.");
 
-                response.Data = item;
+                var result = new GetOrderResponseDto
+                {
+                    Customer = "Juan Perez",
+                    Employeed = "John Doe",
+                    OrderId = order.Id,
+                    Province = GlobalVar.Provinces[order.ProvinceCode],
+                    State = order.State,
+                    CreatedAt = order.CreatedAt,
+                    OrderItems = order.OrderItems
+                    .Select(x => new GetOrderItemDto
+                    {
+                        MenuItem = x.IdMenuItemNavigation.Name,
+                        Price = x.IdMenuItemNavigation.Price,
+                        Quantity = x.Quantity
+                    }).ToList()
+                };
+
+                response.Data = result;
                 response.IsSuccess = true;
             }
             catch (Exception ex)
