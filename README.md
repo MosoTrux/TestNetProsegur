@@ -30,17 +30,17 @@ El proyecto realiza una carga inicial de datos al iniciar la aplicación.
 
 Se han creado los siguientes usuarios:
 
-- **Administrador:**
+**Administrador:**
 
 - Email: administrator@outlook.com
 - Contraseña: 12345aB@
 
-- **Supervisor:**
+**Supervisor:**
 
 - Email: supervisor@outlook.com
 - Contraseña: 12345aB@
 
-- **Empleado:**
+**Empleado:**
 
 - Email: employeed@outlook.com
 - Contraseña: 12345aB@
@@ -48,18 +48,18 @@ Se han creado los siguientes usuarios:
 
 Además, se han creado los siguientes productos:
 
-- **Café:**
+**Café:**
 
 - Stock: 20 KG
 - Unidad: KG
 
-- **Leche:
+**Leche:
 
 - Stock: 50 LT
 - Unidad: LT
 
 
-- **Azúcar:**
+**Azúcar:**
 
 - Stock: 200 KG
 - Unidad: KG
@@ -68,14 +68,14 @@ Además, se han creado los siguientes productos:
 
 También, se han definido los siguientes elementos del menú:
 
-- **Hot Coffees:**
+**Hot Coffees:**
 
 - Categoría: Drinks
 - Precio: $15
 - Ingredientes:
 - Café: 0.2 KG
 
-- **Frappuccino:**
+**Frappuccino:**
 
 - Categoría: Drinks
 - Precio: $19
@@ -84,7 +84,7 @@ También, se han definido los siguientes elementos del menú:
 - Leche: 0.1 LT
 - Azúcar: 0.3 KG
 
-- **Cold Coffees:**
+**Cold Coffees:**
 
 - Categoría: Drinks
 - Precio: $13
